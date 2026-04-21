@@ -4,7 +4,6 @@ This project follows a hands-on lab from Microsoft Learn, demonstrating how to i
 
 🚀 Overview
 
-In this exercise, we:
 
 Created a Fabric workspace
 Built a Lakehouse
