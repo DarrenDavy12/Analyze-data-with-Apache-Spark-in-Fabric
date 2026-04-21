@@ -107,7 +107,7 @@ transformed_df = df.withColumn("Year", year(col("OrderDate"))) \
 ```
 
 
-9. Save Data
+8. Save Data
 Save as Parquet
 ```
 transformed_df.write.mode("overwrite").parquet("Files/transformed_data/orders")
@@ -145,7 +145,7 @@ ORDER BY OrderYear;
 
 
 
-12. Data Visualization
+11. Data Visualization
 Matplotlib Example
 ```
 plt.bar(x=df_sales['OrderYear'], height=df_sales['GrossRevenue'])
