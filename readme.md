@@ -32,14 +32,18 @@ Local CSV Files → Lakehouse (Files) → Spark DataFrames
 📂 Dataset
 
 The dataset consists of sales order data across multiple years:
-
+```
 2019.csv
+
 2020.csv
+
 2021.csv
+```
 
 Source:
+```
 https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip
-
+```
 
 
 ⚙️ Steps Performed
