@@ -18,7 +18,7 @@ Visualized insights with matplotlib and seaborn
 
 
 🧱 Architecture
-
+```
 Local CSV Files → Lakehouse (Files) → Spark DataFrames
         ↓
    Data Transformation (PySpark)
@@ -26,7 +26,7 @@ Local CSV Files → Lakehouse (Files) → Spark DataFrames
  Parquet Storage / Delta Tables
         ↓
    SQL Queries & Visualizations
-
+```
 
 
 📂 Dataset
