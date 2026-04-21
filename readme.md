@@ -61,7 +61,9 @@ Created a Fabric notebook
 Used PySpark as the primary language
 
 5. Load Data into DataFrame
+```
 df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")
+```
 
 - Defined a schema for structured data
 - Loaded all CSV files using wildcard *
@@ -69,43 +71,57 @@ df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")
 
 6. Explore Data
 Select & Filter
+```
 customers = df.select("CustomerName", "Email")
-
+```
 
 Filter Example
+```
 customers = df.select("CustomerName", "Email") \
               .where(df['Item'] == 'Road-250 Red, 52')
+```
 
 Aggregation
+```
 productSales = df.groupBy("Item").sum()
+```
 
 Yearly Sales
+```
 yearlySales = df.select(year(col("OrderDate")).alias("Year")) \
                 .groupBy("Year").count().orderBy("Year")
+```
 
 
 7. Transform Data
 Added new columns:
 Year, Month
 FirstName, LastName
+```
 transformed_df = df.withColumn("Year", year(col("OrderDate"))) \
                    .withColumn("Month", month(col("OrderDate")))
+```
 
 
-8. Save Data
+9. Save Data
 Save as Parquet
+```
 transformed_df.write.mode("overwrite").parquet("Files/transformed_data/orders")
+```
 
 
 Partitioned Data
+```
 orders_df.write.partitionBy("Year", "Month") \
          .mode("overwrite") \
          .parquet("Files/partitioned_data")
-
+```
 
 
 9. Create Delta Table
+```
 df.write.format("delta").saveAsTable("salesorders")
+```
 
 Enables:
 Transactions
@@ -115,23 +131,29 @@ Efficient querying
 
 
 10. Query with SQL
+```
 SELECT YEAR(OrderDate) AS OrderYear,
        SUM((UnitPrice * Quantity) + Tax) AS GrossRevenue
 FROM salesorders
 GROUP BY YEAR(OrderDate)
 ORDER BY OrderYear;
+```
 
 
 
-11. Data Visualization
+12. Data Visualization
 Matplotlib Example
+```
 plt.bar(x=df_sales['OrderYear'], height=df_sales['GrossRevenue'])
 plt.title('Revenue by Year')
 plt.show()
+```
 
 
 Seaborn Example
+```
 sns.barplot(x="OrderYear", y="GrossRevenue", data=df_sales)
+```
 
 
 📈 Key Learnings
